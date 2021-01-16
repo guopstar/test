@@ -1,0 +1,19 @@
+create table t_login(
+	username varchar(255) primary key,
+	password varchar(255) not null
+)
+
+insert into t_login(username,password) value('aa','123');
+insert into t_login(username,password) value('bb','4k5k5');
+
+create table t_account(
+	acid bigint primary key,
+	balance bigint not null
+);
+insert into t_account(acid,balance) value(1,20000);
+insert into t_account(acid,balance) value(2,0);
+
+悲观锁
+select ta.acid,ta.balance from t_account ta where ta.acid=1 for update;
+
+select ta.acid,ta.balance from t_account ta where ta.acid=1;
